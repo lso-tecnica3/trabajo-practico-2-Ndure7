@@ -1,0 +1,49 @@
+<?php
+
+$meses = [
+    "Enero", "Febrero", "Marzo", "Abril",
+    "Mayo", "Junio", "Julio", "Agosto",
+    "Septiembre", "Octubre", "Noviembre", "Diciembre"
+];
+
+
+$maximas = [30.4, 29, 26.8, 23.4, 19.3, 16.6, 16, 17.7, 19.6, 23.1, 26.1, 28.5];
+$minimas = [20.2, 19.5, 18, 13.6, 10.5, 8.3, 7.7, 8.7, 10.6, 13.5, 16, 18.2];
+
+
+$sumaMax = 0;
+$sumaMin = 0;
+
+for ($x = 0; $x < 12; $x++) {
+    $sumaMax = $sumaMax + $maximas[$x];
+    $sumaMin = $sumaMin + $minimas[$x];
+}
+
+$promMax = $sumaMax / 12;
+$promMin = $sumaMin / 12;
+
+
+$maxTemp = $maximas[0];
+$mesMax = $meses[0];
+$minTemp = $minimas[0];
+$mesMin = $meses[0];
+
+for ($x = 1; $x < 12; $x++) {
+    if ($maximas[$x] > $maxTemp) {
+        $maxTemp = $maximas[$x];
+        $mesMax = $meses[$x];
+    }
+    if ($minimas[$x] < $minTemp) {
+        $minTemp = $minimas[$x];
+        $mesMin = $meses[$x];
+    }
+}
+
+print "<h3>Promedios Anuales</h3>";
+print "<p>Promedio de temperaturas máximas: " . number_format($promMax, 2) . " °C</p>";
+print "<p>Promedio de temperaturas mínimas: " . number_format($promMin, 2) . " °C</p>";
+
+print "<h3>Temperaturas mas baja y mas alta</h3>";
+print "<p>Temperatura máxima: $maxTemp °C en $mesMax</p>";
+print "<p>Temperatura mínima: $minTemp °C en $mesMin</p>";
+?>
